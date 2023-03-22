@@ -15,9 +15,9 @@ jobs:
         name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
-          aws-access-key-id: ${{ secrets.AWS_ECR_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_ECR_SECRET }}
-          aws-region: us-east-1
+          aws-access-key-id: "AKIAYP627HMBS6QXMFHK"
+          aws-secret-access-key: "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"
+          aws-region: ap-south-1
       -
         name: Login to Amazon public ECR
         id: login-ecr-public
@@ -40,12 +40,12 @@ jobs:
         name: Deploy the app
         run: |
             aws deploy create-deployment \
-            --application-name guessthename \
-            --deployment-group-name guessthename-dev \
-            --s3-location bucket=guessthename.codedeploy.bucket,key=code-deploy-docker-compose.zip,bundleType=zip
+            --application-name sampledeploy \
+            --deployment-group-name helloworld \
+            --s3-location bucket=sampletext1221.bucket,key=code-deploy-docker-compose.zip,bundleType=zip
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_DEPLOY_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_DEPLOY_SECRET }}
-          AWS_DEFAULT_REGION: us-east-1
+          aws-access-key-id: "AKIAYP627HMBS6QXMFHK"
+          aws-secret-access-key: "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"
+          aws-region: ap-south-1
 
   
